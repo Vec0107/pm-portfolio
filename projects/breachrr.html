@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Breachrr — Victor Omitoyin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    a { text-decoration: none; }
+
+    :root {
+      --navy:    #1F4E79;
+      --navy-dk: #163a5e;
+      --black:   #0A0A0A;
+      --white:   #FFFFFF;
+      --off:     #F6F7F9;
+      --grey:    #6B7280;
+      --grey-lt: #9CA3AF;
+      --border:  #E5E7EB;
+      --red:     #E63946;
+      --green:   #22C55E;
+      --font-d:  'Playfair Display', Georgia, serif;
+      --font-b:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-m:  'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); color: var(--black); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 2rem;
+      background: rgba(255,255,255,0.95);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font-d); font-size: 1rem; font-weight: 700; color: var(--navy); }
+    .nav-back { font-size: 0.875rem; font-weight: 500; color: var(--grey); display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+    .nav-back:hover { color: var(--navy); }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 8rem 2rem 3rem;
+      max-width: 1080px; margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 500; color: var(--grey); margin-bottom: 2rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--navy); }
+    .back-link::before { content: "←"; }
+
+    .page-eyebrow { font-family: var(--font-m); font-size: 0.72rem; font-weight: 500; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; }
+
+    .page-h1 { font-family: var(--font-d); font-size: 3.5rem; font-weight: 900; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 1rem; }
+    @media (max-width: 600px) { .page-h1 { font-size: 2.25rem; } }
+
+    .page-tagline { font-size: 1.05rem; color: var(--grey); max-width: 560px; line-height: 1.75; margin-bottom: 2rem; }
+
+    .page-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+    .meta-tag { font-family: var(--font-m); font-size: 0.68rem; font-weight: 500; color: var(--navy); background: rgba(31,78,121,0.08); padding: 0.25rem 0.6rem; border-radius: 3px; letter-spacing: 0.03em; }
+    .meta-active { display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-m); font-size: 0.68rem; color: var(--green); font-weight: 500; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+      70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+
+    /* CONTENT */
+    .content { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+
+    /* METRICS BAR */
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 3rem 0; }
+    @media (max-width: 640px) { .metrics { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 380px) { .metrics { grid-template-columns: 1fr; } }
+    .metric { padding: 1.5rem; border-right: 1px solid var(--border); }
+    .metric:last-child { border-right: none; }
+    .metric-val { font-family: var(--font-d); font-size: 2rem; font-weight: 700; color: var(--navy); }
+    .metric-lbl { font-size: 0.78rem; color: var(--grey); margin-top: 0.2rem; line-height: 1.4; }
+
+    /* TWO COLUMN */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin: 3rem 0; }
+    @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .content-block h2 { font-family: var(--font-d); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.875rem; }
+    .content-block p { font-size: 0.95rem; color: #374151; line-height: 1.8; }
+
+    /* DELIVERABLES LIST */
+    .deliverables-section { padding: 3rem 0; border-top: 1px solid var(--border); margin-top: 1rem; }
+    .deliverables-section h2 { font-family: var(--font-d); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .deliverables-sub { font-size: 0.9rem; color: var(--grey); margin-bottom: 2rem; }
+
+    .deliverables-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .deliverables-list li { display: flex; align-items: flex-start; gap: 0.625rem; font-size: 0.9rem; color: #374151; line-height: 1.6; }
+    .deliverables-list li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--navy); flex-shrink: 0; margin-top: 0.55rem; }
+
+    /* ARTIFACTS */
+    .artifacts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+    @media (max-width: 860px) { .artifacts-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px) { .artifacts-grid { grid-template-columns: 1fr; } }
+
+    .art-card { border: 1px solid var(--border); border-radius: 6px; padding: 1.35rem; display: flex; flex-direction: column; gap: 0.55rem; transition: border-color 0.2s, box-shadow 0.2s; }
+    .art-card:hover { border-color: var(--navy); box-shadow: 0 4px 16px rgba(31,78,121,0.08); }
+    .art-type { font-family: var(--font-m); font-size: 0.67rem; color: var(--grey); text-transform: uppercase; letter-spacing: 0.06em; }
+    .art-name { font-size: 0.93rem; font-weight: 600; color: var(--black); line-height: 1.3; }
+    .art-desc { font-size: 0.84rem; color: var(--grey); line-height: 1.55; flex: 1; }
+    .art-cta { font-size: 0.8rem; font-weight: 600; color: var(--navy); margin-top: 0.2rem; }
+    .art-cta-muted { color: var(--grey-lt); font-weight: 500; }
+    .art-card { cursor: default; }
+
+    /* CONTEXT BOX */
+    .context-box { background: var(--off); border-left: 3px solid var(--navy); border-radius: 0 6px 6px 0; padding: 1.25rem 1.5rem; margin: 2.5rem 0; }
+    .context-box p { font-size: 0.875rem; color: #374151; line-height: 1.75; }
+    .context-box a { color: var(--navy); font-weight: 500; }
+
+    /* FOOTER NAV */
+    .page-footer-nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; margin: 2rem 0; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 1rem; }
+    .footer-link { font-size: 0.88rem; font-weight: 600; color: var(--navy); }
+    .footer-link:hover { text-decoration: underline; }
+
+    footer { background: var(--black); color: rgba(255,255,255,0.3); text-align: center; padding: 1.5rem 2rem; font-size: 0.78rem; }
+
+    @media (max-width: 380px) { .nav-back span { display: none; } }
+    @media (max-width: 600px) { .page-hero { padding: 7rem 1.25rem 2.5rem; } .content { padding: 0 1.25rem; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">Victor Omitoyin</span>
+    <a href="../index.html" class="nav-back">
+      <span>Back to portfolio</span>
+    </a>
+  </nav>
+
+
+  <!-- PAGE HERO ✏️ Edit project name, tagline, tags, dates -->
+  <div class="page-hero">
+    <a href="../index.html" class="back-link">Back to portfolio</a>
+    <p class="page-eyebrow">Case study</p>
+    <h1 class="page-h1">Breachrr</h1>
+    <p class="page-tagline">
+      Pre-launch cybersecurity SaaS. Continuous credential exposure monitoring for SMBs and MSPs across the US, UK, Canada, and Australia.
+    </p>
+    <div class="page-meta">
+      <span class="meta-tag">IT Program Manager</span>
+      <span class="meta-tag">Cybersecurity SaaS</span>
+      <span class="meta-tag">Pre-Launch</span>
+      <span class="meta-tag">SMB Market</span>
+      <span class="meta-active"><span class="dot"></span> Active &mdash; June 2026 to present</span>
+      <!-- When complete: replace line above with the line below -->
+      <!-- <span class="meta-tag">Completed &mdash; June 2026 to July 2026</span> -->
+    </div>
+  </div>
+
+
+  <div class="content">
+
+    <!-- METRICS ✏️ Edit numbers -->
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-val">6</div>
+        <div class="metric-lbl">Workstreams mapped and prioritised</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">3 wks</div>
+        <div class="metric-lbl">Delivery window from kickoff to launch</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">8+</div>
+        <div class="metric-lbl">PM artifacts produced</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">5</div>
+        <div class="metric-lbl">Competitors researched and priced</div>
+      </div>
+    </div>
+
+
+    <!-- SITUATION AND ROLE ✏️ Edit content -->
+    <div class="two-col">
+      <div class="content-block">
+        <h2>The situation</h2>
+        <p>
+          The product was fully built and deployed behind a registration gate, four deployment steps from going live. Six workstreams were unresolved and blocking commercial launch. There was no formal tracking, no prioritisation, and no documentation. A three-week window was set to resolve all of it.
+        </p>
+      </div>
+      <div class="content-block">
+        <h2>My role</h2>
+        <p>
+          IT Program Manager. Brought in to impose structure on a solo-founder product, drive the launch critical path, coordinate across six parallel workstreams, and build the documentation and operational foundation the product needed to move from built to live.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- DELIVERABLES AND ARTIFACTS -->
+    <div class="deliverables-section">
+      <h2>What I delivered</h2>
+      <p class="deliverables-sub">A record of work produced across this engagement. Documents contain confidential client information and are available privately on request.</p>
+
+      <ul class="deliverables-list">
+        <li>30-day PM onboarding plan structured into four phases, built around low founder availability</li>
+        <li>Project-level RAID log covering risks, assumptions, issues, and dependencies from the project brief</li>
+        <li>Team and resourcing RAID log covering gaps in the current team structure and what they block</li>
+        <li>Three-week prioritised Gantt chart with six workstreams, owners, and day-level granularity</li>
+        <li>Competitor pricing research across five platforms with verified current pricing</li>
+        <li>Recommended Breachrr paid tier structure with monthly and annual pricing</li>
+        <li>UK company registration research and step-by-step documentation enabling Stripe and Paddle access</li>
+        <li>Nigeria startup outreach list with 10 targeted prospects across direct and MSP channel categories</li>
+        <li>All stakeholder communications including post-call briefs, scoping emails, and project plan cover emails</li>
+      </ul>
+
+      <!-- ARTIFACT DOWNLOADS ✏️ Update file paths, add or remove cards -->
+      <div class="artifacts-grid">
+
+        <div class="art-card">
+          <span class="art-type">Word Doc &middot; Planning</span>
+          <span class="art-name">30-Day PM Onboarding Plan</span>
+          <span class="art-desc">First 30 days in four weekly phases. Covers scope clarification, launch critical path, customer readiness, and operating rhythm.</span>
+          <span class="art-cta art-cta-muted">Available on request</span>
+        </div>
+
+        <div class="art-card">
+          <span class="art-type">Excel &middot; Risk Management</span>
+          <span class="art-name">RAID Log — Project Level</span>
+          <span class="art-desc">Risks, Assumptions, Issues, and Dependencies across four tabs with live status dropdowns and auto-calculated risk scores.</span>
+          <span class="art-cta art-cta-muted">Available on request</span>
+        </div>
+
+        <div class="art-card">
+          <span class="art-type">Excel &middot; Risk Management</span>
+          <span class="art-name">RAID Log — Team and Resourcing</span>
+          <span class="art-desc">Focused RAID log covering risks from the solo-developer structure, role assumptions, active issues, and external dependencies.</span>
+          <span class="art-cta art-cta-muted">Available on request</span>
+        </div>
+
+        <div class="art-card">
+          <span class="art-type">Excel &middot; Gantt Chart</span>
+          <span class="art-name">Three-Week Project Plan</span>
+          <span class="art-desc">Colour-coded Gantt chart. Six workstreams prioritised and assigned with day-level granularity from 10 June to 26 June 2026.</span>
+          <span class="art-cta art-cta-muted">Available on request</span>
+        </div>
+
+        <div class="art-card">
+          <span class="art-type">Word Doc &middot; Strategy</span>
+          <span class="art-name">Competitor Pricing and Tier Recommendations</span>
+          <span class="art-desc">Full pricing research across five platforms with verified current pricing and a recommended Breachrr tier structure with annual pricing.</span>
+          <span class="art-cta art-cta-muted">Available on request</span>
+        </div>
+
+        <div class="art-card">
+          <span class="art-type">Word Doc &middot; Operations</span>
+          <span class="art-name">UK Company Registration Report</span>
+          <span class="art-desc">Research report on registering a UK Ltd as a non-resident Nigerian founder. Documents required, process, costs, and payment processing implications.</span>
+          <span class="art-cta art-cta-muted">Available on request</span>
+        </div>
+
+        <div class="art-card">
+          <span class="art-type">Word Doc &middot; Growth</span>
+          <span class="art-name">Nigeria Startup Outreach List</span>
+          <span class="art-desc">Targeted list of seven Nigerian fintech and healthtech startups as direct prospects, plus three IT solutions companies as MSP channel partner targets.</span>
+          <span class="art-cta art-cta-muted">Available on request</span>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- CONTEXT BOX ✏️ Edit or remove -->
+    <div class="context-box">
+      <p>
+        <strong>About the product.</strong> Breachrr monitors company domains and employee email addresses continuously against breach databases, infostealer malware logs, paste sites, and dark web forums. It gives SMBs and their IT providers a prioritised dashboard and remediation workflow to act on credential exposure before attackers do.
+        <a href="https://breachrr.com" target="_blank" rel="noopener"> Visit breachrr.com &rarr;</a>
+      </p>
+    </div>
+
+
+    <!-- FOOTER NAV -->
+    <div class="page-footer-nav">
+      <a href="../index.html" class="footer-link">&larr; Back to portfolio</a>
+      <!-- ✏️ When you have a next project, add a link here -->
+      <!-- <a href="next-project.html" class="footer-link">Next project &rarr;</a> -->
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Victor Omitoyin &mdash; PM Portfolio &middot; Built with GitHub Pages</p>
+  </footer>
+
+</body>
+</html>
