@@ -1,4 +1,4 @@
-# Victor Omitoyin — PM Portfolio
+# Victor Omitoyin {PM Portfolio}
 
 A project management portfolio built with HTML and hosted on GitHub Pages.
 
